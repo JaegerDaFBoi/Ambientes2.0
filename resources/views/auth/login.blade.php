@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <a href="{{ route('register') }}">register</a> 
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
