@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class LearningOutcome extends Model
 {
     use HasFactory;
+
+    public function competence()
+    {
+        return $this->belongsTo(Competence::class, 'fk_competencia');
+    }
 }

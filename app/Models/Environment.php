@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Environment extends Model
 {
     use HasFactory;
+
+    public function assignment()
+    {
+        return $this->belongsTo(Assignment::class, 'fk_ambiente');
+    }
 }

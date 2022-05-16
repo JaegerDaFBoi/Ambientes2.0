@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Instructor extends Model
 {
     use HasFactory;
+
+    public function card()
+    {
+        return $this->belongsTo(Card::class, 'fk_instructor');
+    }
+
+    public function assignment()
+    {
+        return $this->belongsTo(Assignment::class, 'fk_instructor');
+    }
 }
