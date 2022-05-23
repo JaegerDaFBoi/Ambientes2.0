@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InstructorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,11 @@ Route::middleware([
 Route::get('/auth', function(){
     return view('auth.register');
 });
+
+//Rutas instructores
+Route::get('/instructor/index',[InstructorController::class, 'index'])->name('instructores.index');
+Route::get('/instructor/create',[InstructorController::class, 'create'])->name('instructores.create');
+Route::post('/instructor/stored', [InstructorController::class, 'store'])->name('instructores.store');
+Route::get('/instructor/edit',[InstructorController::class, 'edit'])->name('instructores.edit');
+Route::post('/instructor/updated',[InstructorController::class, 'update'])->name('instructores.update');
+Route::delete('/instructor/delete',[InstructorController::class,'destroy'])->name('instructores.destroy');

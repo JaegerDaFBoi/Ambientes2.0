@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class InstructorController extends Controller
 {
@@ -14,7 +15,8 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        //
+        $instructores = Instructor::all();
+        return view('instructores.index', compact('instructores'));
     }
 
     /**
@@ -24,7 +26,8 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        //
+        $instructor = new Instructor();
+        return view('instructores.create', compact('instructor'));
     }
 
     /**
@@ -35,7 +38,17 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $instructor = new Instructor();
+        $instructor->nombre = $request->instructorName;
+        $instructor->cedula = $request->instructorDoc;
+        $instructor->area = $request->instructorArea;
+        $instructor->tipo = $request->instructorType;
+        $instructor->vinculacion = $request->instructorVinculation;
+        $instructor->horassemana = $request->instructorHours;
+        $instructor->email = $request->instructorEmail;
+        $instructor->save();
+        session()->flash("flash.banner","Instructor Creado Satisfactoriamente");
+        return Redirect::route('instructores.index');
     }
 
     /**
@@ -57,7 +70,8 @@ class InstructorController extends Controller
      */
     public function edit(Instructor $instructor)
     {
-        //
+        
+        return view('instructores.edit', compact('instructor'));
     }
 
     /**
@@ -69,7 +83,7 @@ class InstructorController extends Controller
      */
     public function update(Request $request, Instructor $instructor)
     {
-        //
+        
     }
 
     /**
