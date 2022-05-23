@@ -68,9 +68,9 @@ class InstructorController extends Controller
      * @param  \App\Models\Instructor  $instructor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Instructor $instructor)
+    public function edit(Request $request)
     {
-        
+        $instructor = Instructor::find($request->input('id')); 
         return view('instructores.edit', compact('instructor'));
     }
 
@@ -83,7 +83,16 @@ class InstructorController extends Controller
      */
     public function update(Request $request, Instructor $instructor)
     {
-        
+        $instructor->nombre = $request->input('instructorName');
+        $instructor->cedula = $request->input('instructorDoc');
+        $instructor->area = $request->input('instructorArea');
+        $instructor->tipo = $request->input('instructorType');
+        $instructor->vinculacion = $request->input('instructorVinculation');
+        $instructor->horassemana = $request->input('instructorHours');
+        $instructor->email = $request->input('instructorEmail');
+        $instructor->save();
+        session()->flash("flash.banner","Instructor Editado Satisfactoriamente");
+        return Redirect::route('instructores.index');
     }
 
     /**
@@ -94,6 +103,7 @@ class InstructorController extends Controller
      */
     public function destroy(Instructor $instructor)
     {
-        //
+        $instructor->delete();
+        return Redirect::route('instructores.index');
     }
 }

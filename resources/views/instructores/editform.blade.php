@@ -2,10 +2,10 @@
 
 <div class="container-fluid">
   <div class="row">
-    <x-adminlte-input name="instructorName" label="Nombre del Instructor" fgroup-class="col-md-10"  />
+    <x-adminlte-input name="instructorName" label="Nombre del Instructor" fgroup-class="col-md-10"  value="{{ $instructor->nombre }}" />
   </div>
   <div class="row">
-    <x-adminlte-input name="instructorDoc" label="Cédula" fgroup-class="col-md-6" :value="old('instructorDoc'), $instructor->cedula" />
+    <x-adminlte-input name="instructorDoc" label="Cédula" fgroup-class="col-md-6" value="{{ $instructor->cedula }}" />
   </div>
   <div class="row">
     <x-adminlte-select name="instructorArea" label="Área" label-class="text-dark" fgroup-class="col-md-8">

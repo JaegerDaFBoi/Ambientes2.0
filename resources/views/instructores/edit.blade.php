@@ -25,7 +25,7 @@
       <x-adminlte-card  title="Formulario de actualización" theme="lightblue" header-class="rounded-bottom">
         <form action="" method="post">
           @method('PUT')
-          @include('instructores.editform')
+          @include('instructores.editform', ['instructor'=>$instructor])
         </form>
       </x-adminlte-card>
     </div>

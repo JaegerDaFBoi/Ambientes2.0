@@ -55,10 +55,11 @@
               <td>{{ $instructor->horassemana }}</td>
               <td>{{ $instructor->email }}</td>
               <td>
-                <a href="{{ route('instructores.edit', $instructor) }}">
+                <a href="{{ route('instructores.edit',['id'=>$instructor->id] ) }}">
+                  
                   <x-adminlte-button theme="primary" icon="fas fa-edit" />
                 </a>
-                <form action="" method="post">
+                <form action="{{ route('instructores.destroy', $instructor)}}" method="post">
                   @method("DELETE")
                   @csrf
                   <x-adminlte-button type="submit" theme="danger" icon="fas fa-eraser" /> 
