@@ -70,10 +70,8 @@ class InstructorController extends Controller
      */
     public function edit(Instructor $instructor)
     {
-        return view('instructores.edit', compact('instructor'));
         
-        //$instructor = Instructor::find($request->input('id')); 
-        //return view('instructores.edit', compact('instructor'));
+        return view('instructores.edit', compact('instructor'));
     }
 
     /**

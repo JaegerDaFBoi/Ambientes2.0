@@ -252,7 +252,7 @@ return [
                 ],
                 [
                     'text'    => 'Fichas',
-                    'url'     => '#',
+                    'route'     => 'fichas.index',
                 ],
                 [
                     'text' => 'Programas',
@@ -384,6 +384,21 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'Tempus Dominus for Bootstrap 4' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'vendor/tempusdominus-bootstrap4/js/tempusdominus-bootstrap4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap4/css/tempusdominus-bootstrap4.min.css',
                 ],
             ],
         ],

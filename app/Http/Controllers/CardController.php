@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Instructor;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -14,7 +16,8 @@ class CardController extends Controller
      */
     public function index()
     {
-        //
+        $fichas = Card::all();
+        return view('fichas.index', compact('fichas'));
     }
 
     /**
@@ -24,7 +27,10 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        $ficha = new Card();
+        $programas = Program::all();
+        $instructores = Instructor::all();
+        return view('fichas.create', compact('ficha','programas','instructores'));
     }
 
     /**
@@ -35,7 +41,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
