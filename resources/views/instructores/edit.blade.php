@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-md-12">
       <x-adminlte-card  title="Formulario de actualización" theme="lightblue" header-class="rounded-bottom">
-        <form action="" method="post">
+        <form action="{{ route('instructores.update', $instructor) }}" method="post">
           @method('PUT')
           @include('instructores.editform', ['instructor'=>$instructor])
         </form>

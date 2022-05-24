@@ -68,10 +68,12 @@ class InstructorController extends Controller
      * @param  \App\Models\Instructor  $instructor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Instructor $instructor)
     {
-        $instructor = Instructor::find($request->input('id')); 
         return view('instructores.edit', compact('instructor'));
+        
+        //$instructor = Instructor::find($request->input('id')); 
+        //return view('instructores.edit', compact('instructor'));
     }
 
     /**

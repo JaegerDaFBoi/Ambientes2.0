@@ -55,7 +55,7 @@
               <td>{{ $instructor->horassemana }}</td>
               <td>{{ $instructor->email }}</td>
               <td>
-                <a href="{{ route('instructores.edit',['id'=>$instructor->id] ) }}">
+                <a href="{{ route('instructores.edit', $instructor ) }}">
                   
                   <x-adminlte-button theme="primary" icon="fas fa-edit" />
                 </a>
