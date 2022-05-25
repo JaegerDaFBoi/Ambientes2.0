@@ -11,12 +11,12 @@ class Card extends Model
 
     public function instructor()
     {
-        return $this->hasOne(Instructor::class, 'fk_instructor');
+        return $this->hasOne(Instructor::class, 'id', 'fk_instructor');
     }
 
     public function program()
     {
-        return $this->hasOne(Program::class, 'fk_programa');
+        return $this->hasOne(Program::class, 'id', 'fk_programa');
     }
 
     public function assignment()

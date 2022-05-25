@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Registro de Fichas</h1>
+        <h1>Detalles de la Ficha</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -18,12 +18,14 @@
     </div>
   </div>
 </section>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <x-adminlte-card title="Formulario de registro" theme="lightblue" theme-mode="outline" header-class="text-uppercase rounded-bottom border info">
-        <form role="form" action="{{ route('fichas.store') }}" method="post">
-        @include('fichas.createform')
+      <x-adminlte-card title="Formulario de actualización" theme="lightblue" header-class="rounded-bottom">
+        <form action="{{ route('fichas.update', $ficha) }}" method="post">
+          @method('PUT')
+          @include('fichas.editform')
         </form>
       </x-adminlte-card>
     </div>

@@ -6,6 +6,7 @@ use App\Models\Card;
 use App\Models\Instructor;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CardController extends Controller
 {
@@ -16,7 +17,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        $fichas = Card::all();
+        $fichas = Card::with('program:id,nombre','instructor:id,nombre')->get();
         return view('fichas.index', compact('fichas'));
     }
 
@@ -41,7 +42,18 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $card = new Card();
+        $card->numero = $request->cardNumber;
+        $card->fk_programa = $request->cardProgram;
+        $card->jornada = $request->cardAssignedTime;
+        $card->modalidad = $request->cardMode;
+        $card->fechainicio = $request->cardstartDate;
+        $card->fechafin = $request->cardendDate;
+        $card->fk_instructor = $request->cardInstructor;
+        $card->cantidad = $request->cardApprentices;
+        $card->save();
+        session()->flash("flash.banner","Ficha Creada Satisfactoriamente");
+        return Redirect::route('fichas.index');
     }
 
     /**
@@ -61,9 +73,11 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function edit(Card $card)
+    public function edit(Card $ficha)
     {
-        //
+        $programas = Program::all();
+        $instructores = Instructor::all();
+        return view('fichas.edit', compact('ficha','programas','instructores'));
     }
 
     /**
@@ -75,7 +89,17 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-        //
+        $card->numero = $request->cardNumber;
+        $card->fk_programa = $request->cardProgram;
+        $card->jornada = $request->cardAssignedTime;
+        $card->modalidad = $request->cardMode;
+        $card->fechainicio = $request->cardstartDate;
+        $card->fechafin = $request->cardendDate;
+        $card->fk_instructor = $request->cardInstructor;
+        $card->cantidad = $request->cardApprentices;
+        $card->save();
+        session()->flash("flash.banner","Ficha Editada Satisfactoriamente");
+        return Redirect::route('fichas.index');
     }
 
     /**
@@ -86,6 +110,7 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
-        //
+        $card->delete();
+        return Redirect::route('fichas.index');
     }
 }

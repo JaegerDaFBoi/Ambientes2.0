@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Fichas')
+@section('title', 'Programas')
 
 @section('content')
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Lista de Fichas</h1>
+        <h1>Lista de Programas</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -21,7 +21,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-      <a href="{{ route('fichas.create') }}">
+      <a href="{{ route('programas.create') }}">
         <x-adminlte-button label="Crear Nuevo Registro" theme="primary" />
       </a>
     </div>
@@ -32,33 +32,35 @@
         <div class="card-body table-responsive p-0">
           @php
           $heads = [
-            'ID',
-            'Número de Ficha',
-            'Programa de Formación',
-            'Jornada',
-            'Modalidad',
-            'Fecha de inicio',
-            'Fecha de terminación',
-            'Gestor de grupo',
-            'Número de aprendices',
-            'Opciones'
-            ];
+          'ID',
+          'Codigo',
+          'Nombre',
+          'Etapa lectiva/Meses',
+          'Etapa practica/Meses',
+          'Nivel de formación',
+          'Perfil del instructor',
+          'Descripcion',
+          'Trimestres en total',
+          'Competencias',
+          'Opciones'
+          ];
           @endphp
-          <x-adminlte-datatable id="cardTable" :heads="$heads" head-theme="dark" hoverable bordered>
-            @foreach ($fichas as $ficha)
+          <x-adminlte-datatable id="programTable" :heads="$heads" head-theme="dark" hoverable bordered>
+            @foreach ($programas as $programa)
             <tr>
-              <td>{{ $ficha->id }}</td>
-              <td>{{ $ficha->numero }}</td>
-              <td>{{ $ficha->program->nombre }}</td>
-              <td>{{ $ficha->jornada }}</td>
-              <td>{{ $ficha->modalidad }}</td>
-              <td>{{ $ficha->fechainicio }}</td>
-              <td>{{ $ficha->fechafin }}</td>
-              <td>{{ $ficha->instructor->nombre }}</td>
-              <td>{{ $ficha->cantidad }}</td>
+              <td>{{ $programa->id }}</td>
+              <td>{{ $programa->codigo }}</td>
+              <td>{{ $programa->nombre }}</td>
+              <td>{{ $programa->duracionlectiva }}</td>
+              <td>{{ $programa->duracionpractica }}</td>
+              <td>{{ $programa->nivelformacion }}</td>
+              <td>{{ $programa->perfilinstructor }}</td>
+              <td>{{ $programa->descripcion }}</td>
+              <td>{{ $programa->totaltrimestres }}</td>
+              <td><a href="">Competencias</a></td>
               <td>
-                <a href="{{ route('fichas.edit', $ficha) }}">
-                  <x-adminlte-button theme="primary" icon="fas fa-edit" />
+                <a href="">
+                <x-adminlte-button theme="primary" icon="fas fa-edit" />
                 </a>
                 <form action="" method="post">
                   @method("DELETE")

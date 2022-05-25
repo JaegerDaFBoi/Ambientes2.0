@@ -11,7 +11,7 @@ class Program extends Model
 
     public function card()
     {
-        return $this->belongsTo(Card::class, 'fk_programa');
+        return $this->belongsTo(Card::class, 'fk_programa', 'id');
     }
 
     public function competences()

@@ -3,7 +3,9 @@
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\ProgramController;
 use App\Models\Environment;
+use App\Models\Program;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
 
@@ -59,3 +61,11 @@ Route::post('/ambiente/stored',[EnvironmentController::class, 'store'])->name('a
 Route::get('/ambiente/{ambiente}/edit',[EnvironmentController::class, 'edit'])->name('ambientes.edit');
 Route::put('/ambiente/{ambiente}/updated',[EnvironmentController::class, 'update'])->name('ambientes.update');
 Route::delete('/ambiente/delete/{ambiente}',[EnvironmentController::class, 'destroy'])->name('ambientes.destroy');
+
+//Rutas Programas
+Route::get('/programa/index',[ProgramController::class, 'index'])->name('programas.index');
+Route::get('/programa/create',[ProgramController::class, 'create'])->name('programas.create');
+Route::post('/programa/stored',[ProgramController::class, 'store'])->name('programas.store');
+Route::get('/programa/{programa}/edit',[ProgramController::class, 'edit'])->name('programas.edit');
+Route::put('/programa/{programa}/updated',[ProgramController::class, 'update'])->name('programas.update');
+Route::delete('/programa/delete/{programa}',[ProgramController::class, 'destroy'])->name('programas.destroy');

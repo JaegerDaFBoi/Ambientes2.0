@@ -256,11 +256,11 @@ return [
                 ],
                 [
                     'text' => 'Programas',
-                    'url'  => '#',
+                    'route'  => 'programas.index',
                 ],
                 [
                     'text' => 'Ambientes',
-                    'url' => '#',
+                    'url' => 'ambientes.index',
                 ],
             ],
         ],

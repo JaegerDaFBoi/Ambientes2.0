@@ -11,7 +11,7 @@ class Instructor extends Model
 
     public function card()
     {
-        return $this->belongsTo(Card::class, 'fk_instructor');
+        return $this->belongsTo(Card::class, 'fk_instructor', 'id');
     }
 
     public function assignment()

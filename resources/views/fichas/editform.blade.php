@@ -2,12 +2,16 @@
 @section('plugins.TempusDominusBs4', true)
 <div class="container-fluid">
   <div class="row">
-    <x-adminlte-input name="cardNumber" label="Número de ficha" fgroup-class="col-md-10" />
+    <x-adminlte-input name="cardNumber" label="Número de ficha" fgroup-class="col-md-10" value="{{ $ficha->numero }}"/>
   </div>
   <div class="row">
     <x-adminlte-select name="cardProgram" label="Programa de formación" label-class="text-dark" fgroupclass="col-md-12">
       @foreach ($programas as $program)
-      <option value="{{ $program->id }}">{{ $program->nombre }}</option>
+        @if ($program->id == $ficha->fk_programa)
+          <option value="{{ $program->id }}" selected>{{ $program->nombre }}</option>
+        @else
+          <option value="{{ $program->id }}">{{ $program->nombre }}</option>
+        @endif
       @endforeach
     </x-adminlte-select>
   </div>
@@ -42,14 +46,14 @@
     'dayViewHeaderFormat' => 'MMM YYYY',
     ];
     @endphp
-    <x-adminlte-input-date name="cardstartDate" label="Fecha de Inicio" igroup-size="sm" :config="$config" fgroup-class="col-sm-6">
+    <x-adminlte-input-date name="cardstartDate" label="Fecha de Inicio" igroup-size="sm" :config="$config" fgroup-class="col-sm-6" value="{{ $ficha->fechainicio }}">
       <x-slot name="appendSlot">
         <div class="input-group-text bg-dark">
           <i class="fas fa-calendar-day"></i>
         </div>
       </x-slot>
     </x-adminlte-input-date>
-    <x-adminlte-input-date name="cardendDate" label="Fecha de Finalización" igroup-size="sm" :config="$config" fgroup-class="col-sm-6">
+    <x-adminlte-input-date name="cardendDate" label="Fecha de Finalización" igroup-size="sm" :config="$config" fgroup-class="col-sm-6" value="{{ $ficha->fechafin }}">
       <x-slot name="appendSlot">
         <div class="input-group-text bg-dark">
           <i class="fas fa-calendar-day"></i>
@@ -60,12 +64,16 @@
   <div class="row">
     <x-adminlte-select name="cardInstructor" label="Gestor de Grupo" label-class="text-dark" fgroup-class="col-md-10">
       @foreach ($instructores as $instructor)
-      <option value="{{ $instructor->id }}">{{ $instructor->nombre }}</option>
+        @if ($instructor->id == $ficha->fk_instructor)
+          <option value="{{ $instructor->id }}" selected>{{ $instructor->nombre }}</option>
+        @else
+          <option value="{{ $instructor->id }}">{{ $instructor->nombre }}</option>
+        @endif
       @endforeach
     </x-adminlte-select>
   </div>
   <div class="row">
-    <x-adminlte-input name="cardApprentices" label="Número de aprendices" fgroup-class="col-md-6" />
+    <x-adminlte-input name="cardApprentices" label="Número de aprendices" fgroup-class="col-md-6" value="{{ $ficha->cantidad }}"/>
   </div>
   <div class="row">
     <div class="col-md-6">
