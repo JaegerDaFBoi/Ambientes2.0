@@ -387,18 +387,23 @@ return [
                 ],
             ],
         ],
-        'Tempus Dominus for Bootstrap 4' => [
-            'active' => true,
+        'TempusDominusBs4' => [
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => 'vendor/tempusdominus-bootstrap4/js/tempusdominus-bootstrap4.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => true,
-                    'location' => 'vendor/tempusdominus-bootstrap4/css/tempusdominus-bootstrap4.min.css',
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
                 ],
             ],
         ],

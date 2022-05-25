@@ -1,5 +1,5 @@
 @csrf
-
+@section('plugins.TempusDominusBs4', true)
 <div class="container-fluid">
   <div class="row">
     <x-adminlte-input name="cardNumber" label="Número de ficha" fgroup-class="col-md-10" />
@@ -35,5 +35,19 @@
       </div>
     </div>
   </div>
-  
+  <div class="row">
+    @php
+    $config = [
+    'format' => 'YYYY-MM-DD',
+    'dayViewHeaderFormat' => 'MMM YYYY',
+    ];
+    @endphp
+    <x-adminlte-input-date name="idSizeSm" label="Working Datetime" igroup-size="sm" :config="$config" placeholder="Choose a working day...">
+      <x-slot name="appendSlot">
+        <div class="input-group-text bg-dark">
+          <i class="fas fa-calendar-day"></i>
+        </div>
+      </x-slot>
+    </x-adminlte-input-date>
+  </div>
 </div>
