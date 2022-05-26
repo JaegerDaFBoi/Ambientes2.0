@@ -59,14 +59,21 @@
               <td>{{ $programa->totaltrimestres }}</td>
               <td><a href="">Competencias</a></td>
               <td>
-                <a href="">
+                <a href="{{ route('programas.edit', $programa) }}">
                 <x-adminlte-button theme="primary" icon="fas fa-edit" />
                 </a>
-                <form action="" method="post">
-                  @method("DELETE")
-                  @csrf
-                  <x-adminlte-button type="submit" theme="danger" icon="fas fa-eraser" />
-                </form>
+                <x-adminlte-button data-toggle="modal" data-target="#modalDelete" icon="fas fa-eraser" theme="danger" />
+                <x-adminlte-modal id="modalDelete" title="Eliminación de registro" size="md" theme="danger" icon="fas fa-trash">
+                  <div>¿Está seguro que desea eliminar este registro?</div>
+                  <x-slot name="footerSlot">
+                    <form action="{{ route('programas.destroy', $programa)}}" method="post">
+                      @method("DELETE")
+                      @csrf
+                      <x-adminlte-button label="Eliminar" type="submit" theme="danger" />
+                    </form>
+                  </x-slot>
+
+                </x-adminlte-modal>
               </td>
             </tr>
             @endforeach

@@ -8,20 +8,27 @@
     <x-adminlte-input name="instructorDoc" label="Cédula" fgroup-class="col-md-6" />
   </div>
   <div class="row">
+    @php
+    $options = [
+    'AREA DE SISTEMAS, MANTENIMIENTO DE EQUIPOS DE COMPUTO Y DISEÑO GRAFICO Y MULTIMEDIAL',
+    'AREA DE ELECTRONICA Y MANTENIMIENTO ELECTRONICO',
+    'AREA DE DISEÑO, IMPLEMENTACION Y MANTENIMIENTO DE SISTEMAS DE TELECOMUNICACIONES',
+    'AREA DE TELEINFORMATICA Y ADSI',
+    'AREA DE CNC',
+    'GESTION DE LA PRODUCCION INDUSTRIAL',
+    'AREA DE AUTOMATIZACION INDUSTRIAL Y DISEÑO E INTEGRACION DE AUTOMATISMOS MECATRONICOS',
+    'INTERACCION IDONEA COMUNICACION',
+    'AREA DE INGLES',
+    'AREA DE MANTENIMIENTO BIOMEDICO',
+    'CULTURA FISICA',
+    'EMPRENDIMIENTO'
+    ];
+    @endphp
     <x-adminlte-select name="instructorArea" label="Área" label-class="text-dark" fgroup-class="col-md-8">
       <option disabled selected>Seleccione un área</option>
-      <option>AREA DE SISTEMAS, MANTENIMIENTO DE EQUIPOS DE COMPUTO Y DISEÑO GRAFICO Y MULTIMEDIAL</option>
-      <option>AREA DE ELECTRONICA Y MANTENIMIENTO ELECTRONICO</option>
-      <option>AREA DE DISEÑO, IMPLEMENTACION Y MANTENIMIENTO DE SISTEMAS DE TELECOMUNICACIONES</option>
-      <option>AREA DE TELEINFORMATICA Y ADSI</option>
-      <option>AREA DE CNC</option>
-      <option>GESTION DE LA PRODUCCION INDUSTRIAL</option>
-      <option>AREA DE AUTOMATIZACION INDUSTRIAL Y DISEÑO E INTEGRACION DE AUTOMATISMOS MECATRONICOS</option>
-      <option>INTERACCION IDONEA COMUNICACION</option>
-      <option>AREA DE INGLES</option>
-      <option>AREA DE MANTENIMIENTO BIOMEDICO</option>
-      <option>CULTURA FISICA</option>
-      <option>EMPRENDIMIENTO</option>
+      @foreach ($options as $option)
+        <option>{{ $option }}</option>
+      @endforeach
     </x-adminlte-select>
     <div class="form-group col-md-4">
       <label for="instructorType">Tipo de Instructor</label>

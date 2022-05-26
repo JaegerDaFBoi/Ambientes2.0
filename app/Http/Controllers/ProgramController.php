@@ -45,10 +45,10 @@ class ProgramController extends Controller
         $program->duracionpractica = $request->programPracticalStageTime;
         $program->nivelformacion = $request->programformationLevel;
         $program->perfilinstructor = $request->programinstructorProfile;
-        $program->totaltrimestres = ($request->programSchoolStageTime + $request->programPracticalStageTime)/3;
+        $program->totaltrimestres = ($request->programSchoolStageTime + $request->programPracticalStageTime) / 3;
         $program->descripcion = $request->programDescription;
         $program->save();
-        session()->flash("flash.banner","Programa Creado Satisfactoriamente");
+        session()->flash("flash.banner", "Programa Creado Satisfactoriamente");
         return Redirect::route('programas.index');
     }
 
@@ -69,9 +69,9 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function edit(Program $program)
+    public function edit(Program $programa)
     {
-        //
+        return view('programas.edit', compact('programa'));
     }
 
     /**
@@ -83,7 +83,17 @@ class ProgramController extends Controller
      */
     public function update(Request $request, Program $program)
     {
-        //
+        $program->codigo = $request->programCode;
+        $program->nombre = $request->programName;
+        $program->duracionlectiva = $request->programSchoolStageTime;
+        $program->duracionpractica = $request->programPracticalStageTime;
+        $program->nivelformacion = $request->programformationLevel;
+        $program->perfilinstructor = $request->programinstructorProfile;
+        $program->totaltrimestres = ($request->programSchoolStageTime + $request->programPracticalStageTime) / 3;
+        $program->descripcion = $request->programDescription;
+        $program->save();
+        session()->flash("flash.banner","Programa Editado Satisfactoriamente");
+        return Redirect::route('programas.index');
     }
 
     /**
@@ -92,8 +102,9 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Program $program)
+    public function destroy(Program $programa)
     {
-        //
+        $programa->delete();
+        return Redirect::route('programas.index');
     }
 }
