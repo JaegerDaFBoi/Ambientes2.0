@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Environment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class EnvironmentController extends Controller
 {
@@ -14,7 +15,8 @@ class EnvironmentController extends Controller
      */
     public function index()
     {
-        //
+        $ambientes = Environment::where('isEliminated', false)->get();
+        return view('ambientes.index', compact('ambientes'));
     }
 
     /**
@@ -24,7 +26,8 @@ class EnvironmentController extends Controller
      */
     public function create()
     {
-        //
+        $ambiente = new Environment();
+        return view('ambientes.create', compact('ambiente'));
     }
 
     /**
@@ -35,7 +38,13 @@ class EnvironmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ambiente = new Environment();
+        $ambiente->nombre = $request->environmentName;
+        $ambiente->tipo = $request->environmentType;
+        $ambiente->aforo = $request->environmentCapacity;
+        $ambiente->save();
+        session()->flash("flash.banner", "Ambiente Creado Satisfactoriamente");
+        return Redirect::route('ambientes.index');
     }
 
     /**
@@ -44,9 +53,9 @@ class EnvironmentController extends Controller
      * @param  \App\Models\Environment  $environment
      * @return \Illuminate\Http\Response
      */
-    public function show(Environment $environment)
+    public function show(Environment $ambiente)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +64,9 @@ class EnvironmentController extends Controller
      * @param  \App\Models\Environment  $environment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Environment $environment)
+    public function edit(Environment $ambiente)
     {
-        //
+        return view('ambientes.edit', compact('ambiente'));
     }
 
     /**
@@ -67,9 +76,14 @@ class EnvironmentController extends Controller
      * @param  \App\Models\Environment  $environment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Environment $environment)
+    public function update(Request $request, Environment $ambiente)
     {
-        //
+        $ambiente->nombre = $request->environmentName;
+        $ambiente->tipo = $request->environmentType;
+        $ambiente->aforo = $request->environmentCapacity;
+        $ambiente->save();
+        session()->flash("flash.banner", "Ambiente Editado Satisfactoriamente");
+        return Redirect::route('ambientes.index');
     }
 
     /**
@@ -78,8 +92,10 @@ class EnvironmentController extends Controller
      * @param  \App\Models\Environment  $environment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Environment $environment)
+    public function destroy(Environment $ambiente)
     {
-        //
+        $ambiente->isEliminated = true;
+        $ambiente->save();
+        return Redirect::route('ambientes.index');
     }
 }

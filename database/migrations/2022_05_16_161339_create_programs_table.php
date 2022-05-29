@@ -23,6 +23,7 @@ return new class extends Migration
             $table->longText('perfilinstructor');
             $table->integer('totaltrimestres');
             $table->longText('descripcion');
+            $table->boolean('isEliminated')->default(false);
             $table->timestamps();
         });
     }

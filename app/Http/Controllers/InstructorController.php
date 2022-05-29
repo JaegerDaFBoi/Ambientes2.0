@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class InstructorController extends Controller
@@ -15,7 +16,7 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        $instructores = Instructor::all();
+        $instructores = Instructor::where('isEliminated', false)->get();
         return view('instructores.index', compact('instructores'));
     }
 
@@ -47,7 +48,7 @@ class InstructorController extends Controller
         $instructor->horassemana = $request->instructorHours;
         $instructor->email = $request->instructorEmail;
         $instructor->save();
-        session()->flash("flash.banner","Instructor Creado Satisfactoriamente");
+        session()->flash("flash.banner", "Instructor Creado Satisfactoriamente");
         return Redirect::route('instructores.index');
     }
 
@@ -70,7 +71,7 @@ class InstructorController extends Controller
      */
     public function edit(Instructor $instructor)
     {
-        
+
         return view('instructores.edit', compact('instructor'));
     }
 
@@ -91,7 +92,7 @@ class InstructorController extends Controller
         $instructor->horassemana = $request->input('instructorHours');
         $instructor->email = $request->input('instructorEmail');
         $instructor->save();
-        session()->flash("flash.banner","Instructor Editado Satisfactoriamente");
+        session()->flash("flash.banner", "Instructor Editado Satisfactoriamente");
         return Redirect::route('instructores.index');
     }
 
@@ -103,7 +104,8 @@ class InstructorController extends Controller
      */
     public function destroy(Instructor $instructor)
     {
-        $instructor->delete();
+        $instructor->isEliminated = true;
+        $instructor->save();
         return Redirect::route('instructores.index');
     }
 }

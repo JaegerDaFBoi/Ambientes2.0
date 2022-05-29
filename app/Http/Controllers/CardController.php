@@ -17,7 +17,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        $fichas = Card::with('program:id,nombre','instructor:id,nombre')->get();
+        $fichas = Card::with('program:id,nombre','instructor:id,nombre')->where('isEliminated', false)->get();
         return view('fichas.index', compact('fichas'));
     }
 
@@ -29,8 +29,8 @@ class CardController extends Controller
     public function create()
     {
         $ficha = new Card();
-        $programas = Program::all();
-        $instructores = Instructor::all();
+        $programas = Program::where('isEliminated', false)->get();
+        $instructores = Instructor::where('isEliminated', false)->get();
         return view('fichas.create', compact('ficha','programas','instructores'));
     }
 
@@ -75,8 +75,8 @@ class CardController extends Controller
      */
     public function edit(Card $ficha)
     {
-        $programas = Program::all();
-        $instructores = Instructor::all();
+        $programas = Program::where('isEliminated', false)->get();
+        $instructores = Instructor::where('isEliminated', false)->get();
         return view('fichas.edit', compact('ficha','programas','instructores'));
     }
 
@@ -87,17 +87,17 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Card $card)
+    public function update(Request $request, Card $ficha)
     {
-        $card->numero = $request->cardNumber;
-        $card->fk_programa = $request->cardProgram;
-        $card->jornada = $request->cardAssignedTime;
-        $card->modalidad = $request->cardMode;
-        $card->fechainicio = $request->cardstartDate;
-        $card->fechafin = $request->cardendDate;
-        $card->fk_instructor = $request->cardInstructor;
-        $card->cantidad = $request->cardApprentices;
-        $card->save();
+        $ficha->numero = $request->cardNumber;
+        $ficha->fk_programa = $request->cardProgram;
+        $ficha->jornada = $request->cardAssignedTime;
+        $ficha->modalidad = $request->cardMode;
+        $ficha->fechainicio = $request->cardstartDate;
+        $ficha->fechafin = $request->cardendDate;
+        $ficha->fk_instructor = $request->cardInstructor;
+        $ficha->cantidad = $request->cardApprentices;
+        $ficha->save();
         session()->flash("flash.banner","Ficha Editada Satisfactoriamente");
         return Redirect::route('fichas.index');
     }
@@ -108,9 +108,10 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Card $card)
+    public function destroy(Card $ficha)
     {
-        $card->delete();
+        $ficha->isEliminated = true;
+        $ficha->save();
         return Redirect::route('fichas.index');
     }
 }

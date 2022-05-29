@@ -260,7 +260,7 @@ return [
                 ],
                 [
                     'text' => 'Ambientes',
-                    'url' => 'ambientes.index',
+                    'route' => 'ambientes.index',
                 ],
             ],
         ],

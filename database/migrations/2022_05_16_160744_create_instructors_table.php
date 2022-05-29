@@ -22,6 +22,7 @@ return new class extends Migration
             $table->mediumText('vinculacion');
             $table->integer('horassemana');
             $table->mediumText('email');
+            $table->boolean('isEliminated')->default(false);
             $table->timestamps();
         });
     }

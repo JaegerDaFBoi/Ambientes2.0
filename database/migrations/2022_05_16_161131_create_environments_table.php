@@ -18,6 +18,7 @@ return new class extends Migration
             $table->mediumText('nombre');
             $table->mediumText('tipo');
             $table->integer('aforo');
+            $table->boolean('isEliminated')->default(false);
             $table->timestamps();
         });
     }

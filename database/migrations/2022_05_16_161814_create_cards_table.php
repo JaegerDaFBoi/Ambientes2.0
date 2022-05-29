@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('fechafin');
             $table->foreignId('fk_instructor')->constrained('instructors');
             $table->integer('cantidad');
+            $table->boolean('isEliminated')->default(false);
             $table->timestamps();
         });
     }
