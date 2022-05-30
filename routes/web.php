@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProgramController;
@@ -69,3 +70,7 @@ Route::post('/programa/stored',[ProgramController::class, 'store'])->name('progr
 Route::get('/programa/{programa}/edit',[ProgramController::class, 'edit'])->name('programas.edit');
 Route::put('/programa/{programa}/updated',[ProgramController::class, 'update'])->name('programas.update');
 Route::delete('/programa/delete/{programa}',[ProgramController::class, 'destroy'])->name('programas.destroy');
+
+//Rutas Competencias
+Route::get('/competencia/{programa}/index',[CompetenceController::class, 'index'])->name('competencias.index');
+Route::get('/competencia/{programa}/create',[CompetenceController::class, 'create'])->name('competencias.create');

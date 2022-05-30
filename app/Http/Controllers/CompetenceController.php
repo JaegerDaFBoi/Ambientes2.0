@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competence;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class CompetenceController extends Controller
@@ -12,9 +13,10 @@ class CompetenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Program $programa)
     {
-        //
+        $competencias = Competence::where('fk_programa','=', $programa->id)->where('isEliminated',false)->get();
+        return view('competencias.index', compact('programa','competencias'));
     }
 
     /**
@@ -22,9 +24,10 @@ class CompetenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Program $programa)
     {
-        //
+        $competencia = new Competence();
+        return view('competencias.create', compact('programa', 'competencia'));
     }
 
     /**

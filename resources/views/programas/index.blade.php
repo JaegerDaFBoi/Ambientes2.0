@@ -57,7 +57,7 @@
               <td>{{ $programa->perfilinstructor }}</td>
               <td>{{ $programa->descripcion }}</td>
               <td>{{ $programa->totaltrimestres }}</td>
-              <td><a href="">Competencias</a></td>
+              <td><a href="{{ route('competencias.index', $programa) }}">Competencias</a></td>
               <td>
                 <a href="{{ route('programas.edit', $programa) }}">
                 <x-adminlte-button theme="primary" icon="fas fa-edit" />
