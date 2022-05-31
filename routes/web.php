@@ -74,3 +74,6 @@ Route::delete('/programa/delete/{programa}',[ProgramController::class, 'destroy'
 //Rutas Competencias
 Route::get('/competencia/{programa}/index',[CompetenceController::class, 'index'])->name('competencias.index');
 Route::get('/competencia/{programa}/create',[CompetenceController::class, 'create'])->name('competencias.create');
+Route::post('/competencia/{programa}/stored',[CompetenceController::class, 'store'])->name('competencias.store');
+Route::get('/competencia/{programa}/{competencia}/show',[CompetenceController::class, 'show'])->name('competencias.show');
+Route::put('/competencia/{programa}/{competencia}/updated',[CompetenceController::class, 'update'])->name('competencias.update');

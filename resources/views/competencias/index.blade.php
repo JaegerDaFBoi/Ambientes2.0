@@ -50,9 +50,9 @@
               <td>{{ $competencia->id }}</td>
               <td>{{ $competencia->codigo }}</td>
               <td>{{ $competencia->descripcion }}</td>
-              <td>{{ $competencia->horassemanales }}</td>
+              <td>{{ $competencia->horassemana }}</td>
               <td>
-                <a href="">
+                <a href="{{ route('competencias.show', [$programa, $competencia]) }}">
                   <x-adminlte-button theme="primary" icon="fas fa-edit" />
                 </a>
               </td>

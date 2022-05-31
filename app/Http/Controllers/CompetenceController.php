@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Competence;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CompetenceController extends Controller
 {
@@ -36,9 +37,16 @@ class CompetenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Program $programa)
     {
-        //
+        $competence = new Competence();
+        $competence->codigo = $request->competenceCode;
+        $competence->descripcion = $request->competenceDescription;
+        $competence->horassemana = $request->competenceHours;
+        $competence->fk_programa = $programa->id;
+        $competence->save();
+        session()->flash("flash.banner", "Competencia Creada Satisfactoriamente");
+        return Redirect::route('competencias.index', compact('programa'));
     }
 
     /**
@@ -47,9 +55,9 @@ class CompetenceController extends Controller
      * @param  \App\Models\Competence  $competence
      * @return \Illuminate\Http\Response
      */
-    public function show(Competence $competence)
+    public function show(Program $programa, Competence $competencia)
     {
-        //
+        return view('competencias.show', compact('programa', 'competencia'));
     }
 
     /**
@@ -70,9 +78,15 @@ class CompetenceController extends Controller
      * @param  \App\Models\Competence  $competence
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Competence $competence)
+    public function update(Request $request, Program $programa, Competence $competencia)
     {
-        //
+        $competencia->codigo = $request->competenceCode;
+        $competencia->descripcion = $request->competenceDescription;
+        $competencia->horassemana = $request->competenceHours;
+        $competencia->fk_programa = $programa->id;
+        $competencia->save();
+        session()->flash("flash.banner", "Competencia Editada Satisfactoriamente");
+        return Redirect::route('competencias.index', compact('programa'));
     }
 
     /**

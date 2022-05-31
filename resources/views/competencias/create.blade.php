@@ -28,7 +28,7 @@
   <div class="row">
     <div class="col-md-12">
       <x-adminlte-card title="Formulario de registro" theme="lightblue" theme-mode="outline" header-class="rounded-bottom">
-        <form action="" method="post">
+        <form action="{{ route('competencias.store', $programa) }}" method="post">
           @include('competencias.createform')
         </form>
       </x-adminlte-card>
