@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Competence;
 use App\Models\LearningOutcome;
+use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class LearningOutcomeController extends Controller
 {
@@ -33,9 +36,15 @@ class LearningOutcomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Competence $competencia, Program $programa)
     {
-        //
+        $resultado = new LearningOutcome();
+        $resultado->descripcion = $request->learningDescription;
+        $resultado->trimestreasignacion = $request->learningAssignTrimester;
+        $resultado->trimestreevaluacion = $request->learningEvaluationTrimester;
+        $resultado->fk_competencia = $competencia->id;
+        $resultado->save();
+        return Redirect::route('competencias.show', compact('programa', 'competencia'));
     }
 
     /**

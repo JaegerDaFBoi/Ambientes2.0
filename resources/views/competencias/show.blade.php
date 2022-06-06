@@ -57,6 +57,61 @@
       </x-adminlte-card>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-sm-6">
+          <x-adminlte-button data-toggle="modal" data-target="#modalCreate" icon="fas fa-plus" theme="primary" label="Añadir Resultado" />
+          <x-adminlte-modal id="modalCreate" title="Creación de resultado de aprendizaje" size="md" theme="primary" icon="fas fa-award">
+            <form action="{{ route('resultados.store', [$competencia, $programa]) }}" method="post">
+              @csrf
+              <div class="row">
+                <x-adminlte-textarea name="learningDescription" label="Descripción" rows="6" col="40" fgroup-class="col-md-8" />
+              </div>
+              <div class="row">
+                <x-adminlte-input type="number" name="learningAssignTrimester" label="Trimestre de Asignación" fgroup-class="col-md-6" />
+              </div>
+              <div class="row">
+                <x-adminlte-input type="number" name="learningEvaluationTrimester" label="Trimestre de Evaluación" fgroup-class="col-md-6" />
+              </div>
+              <div class="row">
+                <x-adminlte-input type="text" name="learningCompetence" label="Competencia" fgroup-class="col-md-6" value="{{ $competencia->codigo }}" disabled />
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <x-adminlte-button class="btn-md" type="submit" label="Guardar" theme="dark" icon="fas fa-lg fa-save" />
+                </div>
+              </div>
+            </form>
+          </x-adminlte-modal>
+        </div>
+      </div>
+      <x-adminlte-card title="Resultados de Aprendizaje" theme="lightblue" header-class="rounded-bottom">
+        @php
+        $heads = [
+        'ID',
+        'Descripcion',
+        'Trimestre de Asignación',
+        'Trimestre de Evaluación',
+        'Opciones'
+        ];
+        @endphp
+        <x-adminlte-datatable id="learningoutcomesTable" :heads="$heads" head-theme="dark" hoverable bordered>
+          @foreach ($resultados as $resultado)
+          <tr>
+            <td>{{ $resultado->id }}</td>
+            <td>{{ $resultado->descripcion }}</td>
+            <td>{{ $resultado->trimestreasignacion }}</td>
+            <td>{{ $resultado->trimestreevaluacion }}</td>
+            <td>
+
+            </td>
+          </tr>
+          @endforeach
+        </x-adminlte-datatable>
+      </x-adminlte-card>
+    </div>
+  </div>
 </div>
 @stop
 

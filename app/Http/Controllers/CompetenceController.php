@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competence;
+use App\Models\LearningOutcome;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -57,7 +58,8 @@ class CompetenceController extends Controller
      */
     public function show(Program $programa, Competence $competencia)
     {
-        return view('competencias.show', compact('programa', 'competencia'));
+        $resultados = LearningOutcome::where('fk_competencia','=', $competencia->id)->where('isEliminated',false)->get();
+        return view('competencias.show', compact('programa', 'competencia', 'resultados'));
     }
 
     /**

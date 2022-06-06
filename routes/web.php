@@ -4,6 +4,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\LearningOutcomeController;
 use App\Http\Controllers\ProgramController;
 use App\Models\Environment;
 use App\Models\Program;
@@ -77,3 +78,6 @@ Route::get('/competencia/{programa}/create',[CompetenceController::class, 'creat
 Route::post('/competencia/{programa}/stored',[CompetenceController::class, 'store'])->name('competencias.store');
 Route::get('/competencia/{programa}/{competencia}/show',[CompetenceController::class, 'show'])->name('competencias.show');
 Route::put('/competencia/{programa}/{competencia}/updated',[CompetenceController::class, 'update'])->name('competencias.update');
+
+//Rutas Resultados de Aprendizaje
+Route::post('/resultado/{competencia}/{programa}/stored',[LearningOutcomeController::class, 'store'])->name('resultados.store');
