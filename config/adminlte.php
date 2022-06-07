@@ -268,7 +268,7 @@ return [
         [
             'text'       => 'important',
             'icon_color' => 'red',
-            'url'        => '#',
+            'route'        => 'calendario.index',
         ],
         [
             'text'       => 'warning',
@@ -408,7 +408,7 @@ return [
             ],
         ],
         'FullCalendar' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

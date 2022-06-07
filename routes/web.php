@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\EnvironmentController;
@@ -81,3 +82,6 @@ Route::put('/competencia/{programa}/{competencia}/updated',[CompetenceController
 
 //Rutas Resultados de Aprendizaje
 Route::post('/resultado/{competencia}/{programa}/stored',[LearningOutcomeController::class, 'store'])->name('resultados.store');
+
+//Rutas Calendario
+Route::get('/calendario/index',[AssignmentController::class, 'index'])->name('calendario.index');
