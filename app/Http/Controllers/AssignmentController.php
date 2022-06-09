@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use App\Models\Card;
+use App\Models\Competence;
+use App\Models\Environment;
+use App\Models\Instructor;
+use App\Models\LearningOutcome;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
@@ -14,7 +20,15 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        return view('asignaciones.index');
+        $instructores = Instructor::all();
+        $ambientes = Environment::all();
+        $fichas = Card::all();
+        $programas = Program::all();
+        $competencias = Competence::all();
+        $resultados = LearningOutcome::all();
+        return view('asignaciones.index', compact('programas','competencias','resultados','fichas','instructores','ambientes'));
+
+        
     }
 
     /**

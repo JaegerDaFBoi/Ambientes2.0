@@ -18,6 +18,7 @@ class CompetenceController extends Controller
     public function index(Program $programa)
     {
         $competencias = Competence::where('fk_programa','=', $programa->id)->where('isEliminated',false)->get();
+        
         return view('competencias.index', compact('programa','competencias'));
     }
 
