@@ -42,6 +42,7 @@ class LearningOutcomeController extends Controller
         $resultado->descripcion = $request->learningDescription;
         $resultado->trimestreasignacion = $request->learningAssignTrimester;
         $resultado->trimestreevaluacion = $request->learningEvaluationTrimester;
+        $resultado->horassemana = $request->learningHours;
         $resultado->fk_competencia = $competencia->id;
         $resultado->save();
         return Redirect::route('competencias.show', compact('programa', 'competencia'));

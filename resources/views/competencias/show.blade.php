@@ -33,9 +33,6 @@
             <x-adminlte-textarea name="competenceDescription" label="Descripción" rows="8" col="40" fgroup-class="col-md-8">{{ $competencia->descripcion }}</x-adminlte-textarea>
           </div>
           <div class="row">
-            <x-adminlte-input type="number" name="competenceHours" label="Horas Semanales" fgroup-class="col-md-6" value="{{ $competencia->horassemana }}" />
-          </div>
-          <div class="row">
             <div class="col-sm-6">
               <x-adminlte-button class="btn-md" type="submit" label="Actualizar" theme="dark" icon="fas fa-lg fa-save" />
             </div>
@@ -75,6 +72,9 @@
                 <x-adminlte-input type="number" name="learningEvaluationTrimester" label="Trimestre de Evaluación" fgroup-class="col-md-6" />
               </div>
               <div class="row">
+                <x-adminlte-input type="number" name="learningHours" label="Horas Semanales" fgroup-class="col-md-6" />
+              </div>
+              <div class="row">
                 <x-adminlte-input type="text" name="learningCompetence" label="Competencia" fgroup-class="col-md-6" value="{{ $competencia->codigo }}" disabled />
               </div>
               <div class="row">
@@ -93,6 +93,7 @@
         'Descripcion',
         'Trimestre de Asignación',
         'Trimestre de Evaluación',
+        'Horas Semanales',
         'Opciones'
         ];
         @endphp
@@ -103,6 +104,7 @@
             <td>{{ $resultado->descripcion }}</td>
             <td>{{ $resultado->trimestreasignacion }}</td>
             <td>{{ $resultado->trimestreevaluacion }}</td>
+            <td>{{ $resultado->horassemana }}</td>
             <td>
 
             </td>

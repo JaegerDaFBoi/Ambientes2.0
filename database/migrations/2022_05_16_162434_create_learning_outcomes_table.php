@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('descripcion');
             $table->integer('trimestreasignacion');
             $table->integer('trimestreevaluacion');
+            $table->integer('horassemana');
             $table->foreignId('fk_competencia')->constrained('competences');
             $table->boolean('isEliminated')->default(false);
             $table->timestamps();

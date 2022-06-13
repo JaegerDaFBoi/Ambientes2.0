@@ -40,7 +40,6 @@
           'ID',
           'Codigo',
           'Descripcion',
-          'Horas Semanales',
           'Opciones'
           ];
           @endphp
@@ -50,7 +49,6 @@
               <td>{{ $competencia->id }}</td>
               <td>{{ $competencia->codigo }}</td>
               <td>{{ $competencia->descripcion }}</td>
-              <td>{{ $competencia->horassemana }}</td>
               <td>
                 <a href="{{ route('competencias.show', [$programa, $competencia]) }}">
                   <x-adminlte-button theme="primary" icon="fas fa-edit" />

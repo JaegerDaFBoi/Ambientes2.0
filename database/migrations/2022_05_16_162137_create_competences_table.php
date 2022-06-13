@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->text('codigo');
             $table->mediumText('descripcion');
-            $table->integer('horassemana');
             $table->foreignId('fk_programa')->constrained('programs');
             $table->boolean('isEliminated')->default(false);
             $table->timestamps();

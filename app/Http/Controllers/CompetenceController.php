@@ -44,7 +44,6 @@ class CompetenceController extends Controller
         $competence = new Competence();
         $competence->codigo = $request->competenceCode;
         $competence->descripcion = $request->competenceDescription;
-        $competence->horassemana = $request->competenceHours;
         $competence->fk_programa = $programa->id;
         $competence->save();
         session()->flash("flash.banner", "Competencia Creada Satisfactoriamente");
@@ -85,7 +84,6 @@ class CompetenceController extends Controller
     {
         $competencia->codigo = $request->competenceCode;
         $competencia->descripcion = $request->competenceDescription;
-        $competencia->horassemana = $request->competenceHours;
         $competencia->fk_programa = $programa->id;
         $competencia->save();
         session()->flash("flash.banner", "Competencia Editada Satisfactoriamente");
