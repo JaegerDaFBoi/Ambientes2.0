@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('learning_outcomes', function (Blueprint $table) {
+        Schema::create('areas', function (Blueprint $table) {
             $table->id();
-            $table->longText('descripcion');
-            $table->integer('trimestreasignacion');
-            $table->integer('trimestreevaluacion');
-            $table->integer('horassemana');
-            $table->foreignId('fk_competencia')->constrained('competences');
-            $table->boolean('isEliminated')->default(false);
+            $table->text('nombre');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('learning_outcomes');
+        Schema::dropIfExists('areas');
     }
 };

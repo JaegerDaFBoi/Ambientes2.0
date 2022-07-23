@@ -5,7 +5,7 @@
     <x-adminlte-input name="cardNumber" label="Número de ficha" fgroup-class="col-md-10" />
   </div>
   <div class="row">
-    <x-adminlte-select name="cardProgram" label="Programa de formación" label-class="text-dark" fgroupclass="col-md-12">
+    <x-adminlte-select name="cardProgram" label="Programa de formación" label-class="text-dark" fgroup-class="col-md-12">
       @foreach ($programas as $program)
       <option value="{{ $program->id }}">{{ $program->nombre }}</option>
       @endforeach

@@ -85,3 +85,4 @@ Route::post('/resultado/{competencia}/{programa}/stored',[LearningOutcomeControl
 
 //Rutas Calendario
 Route::get('/calendario/index',[AssignmentController::class, 'index'])->name('calendario.index');
+Route::post('/calendario/store',[AssignmentController::class, 'store'])->name('calendario.store');

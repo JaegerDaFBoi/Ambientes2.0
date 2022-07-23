@@ -10,6 +10,7 @@ use App\Models\Instructor;
 use App\Models\LearningOutcome;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AssignmentController extends Controller
 {
@@ -49,7 +50,20 @@ class AssignmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $assignment = new Assignment();
+        $assignment->fk_instructor = $request->instructorAssignment;
+        $assignment->fk_ambiente = $request->environment;
+        $assignment->fk_ficha = $request->cardAssignment;
+        $assignment->fk_competencia = $request->programCompetences;
+        $assignment->fecha = $request->dateAssignment;
+        $assignment->horainicio = $request->startTime;
+        $assignment->horafin = $request->endTime;
+        $assignment->tipoasignacion = $request->typeAssignment;
+        $assignment->descripcion = $request->descriptionAssignment;
+        $assignment->save();
+        session()->flash("flash.banner","Ficha Creada Satisfactoriamente");
+        return Redirect::route('calendario.index');
+
     }
 
     /**

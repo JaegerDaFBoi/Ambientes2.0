@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fk_instructor')->constrained('instructors');
-            $table->foreignId('fk_ambiente')->constrained('environments');
-            $table->foreignId('fk_ficha')->constrained('cards');
-            $table->foreignId('fk_competencia')->constrained('competences');
+            $table->unsignedBigInteger('fk_ficha')->nullable()->index('fk_assignment_card');
+            $table->unsignedBigInteger('fk_competencia')->nullable()->index('fk_assignment_competence');
+            $table->unsignedBigInteger('fk_resultado')->nullable()->index('fk_assignment_outcome');
+            $table->unsignedBigInteger('fk_instructor')->nullable()->index('fk_assignment_instructor');
+            $table->unsignedBigInteger('fk_ambiente')->nullable()->index('fk_assignment_environment');
             $table->date('fecha');
             $table->time('horainicio');
             $table->time('horafin');
-            $table->mediumText('tipoasignacion');
+            $table->unsignedBigInteger('fk_tipo')->nullable()->index('fk_assignment_type');
             $table->longText('descripcion');
             $table->timestamps();
         });

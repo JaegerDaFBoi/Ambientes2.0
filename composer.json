@@ -17,7 +17,7 @@
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.8",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "^1.15",
         "mockery/mockery": "^1.4.4",
         "nascent-africa/jetstrap": "^2.5",
         "nunomaduro/collision": "^6.1",

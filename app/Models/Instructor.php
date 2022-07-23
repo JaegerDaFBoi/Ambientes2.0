@@ -9,6 +9,11 @@ class Instructor extends Model
 {
     use HasFactory;
 
+    public function area()
+    {
+      return $this->hasOne(Area::class, 'fk_area');
+    }
+
     public function card()
     {
         return $this->belongsTo(Card::class, 'fk_instructor', 'id');

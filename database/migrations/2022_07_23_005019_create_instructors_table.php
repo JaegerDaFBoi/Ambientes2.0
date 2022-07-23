@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('nombre');
+            $table->text('nombre');
+            $table->text('apellidos');
             $table->text('cedula');
-            $table->mediumText('area');
+            $table->unsignedBigInteger('fk_area')->nullable()->index('fk_area_instructor');
             $table->mediumText('tipo');
-            $table->mediumText('vinculacion');
+            $table->text('vinculacion');
             $table->integer('horassemana');
             $table->mediumText('email');
             $table->boolean('isEliminated')->default(false);

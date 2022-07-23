@@ -11,7 +11,10 @@
     <div>
         <x-adminlte-button data-toggle="modal" data-target="#evento" theme="danger" label="Crear" />
         <x-adminlte-modal id="evento" title="Asignacion" size="md" theme="danger">
-            <div class="row">
+          <form role="form" action="{{ route('calendario.store') }}" method="post">
+          @livewire('assignment-form')
+          </form>
+            {{-- <div class="row">
                 <div class="col-sm-12">
                     <x-adminlte-select name="instructorAssignment" label="Instructores" label-class="text-dark" fgroupclass="col-md-12">
                         @foreach ($instructores as $instructor)
@@ -50,7 +53,7 @@
                         @endforeach
                     </x-adminlte-select>
                 </div>
-            </div>
+            </div> --}}
         </x-adminlte-modal>
     </div>
 </div>

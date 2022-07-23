@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competences', function (Blueprint $table) {
-            $table->id();
-            $table->text('codigo');
-            $table->mediumText('descripcion');
-            $table->foreignId('fk_programa')->constrained('programs');
-            $table->boolean('isEliminated')->default(false);
-            $table->timestamps();
+        Schema::table('instructors', function (Blueprint $table) {
+            $table->foreign(['fk_area'], 'fk_area_instructor')->references(['id'])->on('areas');
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competences');
+        Schema::table('instructors', function (Blueprint $table) {
+            $table->dropForeign('fk_area_instructor');
+        });
     }
 };

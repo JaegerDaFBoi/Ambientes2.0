@@ -93,13 +93,14 @@
     @endif
 
     {{-- Livewire Script --}}
-    @if(config('adminlte.livewire'))
+    @livewireScripts
+    {{-- @if(config('adminlte.livewire'))
         @if(app()->version() >= 7)
             @livewireScripts
         @else
             <livewire:scripts />
         @endif
-    @endif
+    @endif --}}
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')

@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cards', function (Blueprint $table) {
+        Schema::create('learning_outcomes', function (Blueprint $table) {
             $table->id();
-            $table->integer('numero');
-            $table->foreignId('fk_programa')->constrained('programs');
-            $table->mediumText('jornada');
-            $table->mediumText('modalidad');
-            $table->date('fechainicio');
-            $table->date('fechafin');
-            $table->foreignId('fk_instructor')->constrained('instructors');
-            $table->integer('cantidad');
+            $table->longText('descripcion');
+            $table->integer('trimestreasignacion');
+            $table->integer('trimestreevaluacion');
+            $table->integer('horassemana');
+            $table->unsignedBigInteger('fk_competencia')->nullable()->index('fk_competencia_resultado');
             $table->boolean('isEliminated')->default(false);
             $table->timestamps();
         });
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cards');
+        Schema::dropIfExists('learning_outcomes');
     }
 };
